@@ -1,0 +1,744 @@
+Elm.Main = Elm.Main || {};
+Elm.Main.make = function (_elm) {
+   "use strict";
+   _elm.Main = _elm.Main || {};
+   if (_elm.Main.values)
+   return _elm.Main.values;
+   var _op = {},
+   _N = Elm.Native,
+   _U = _N.Utils.make(_elm),
+   _L = _N.List.make(_elm),
+   _A = _N.Array.make(_elm),
+   _E = _N.Error.make(_elm),
+   $moduleName = "Main",
+   $Basics = Elm.Basics.make(_elm),
+   $Color = Elm.Color.make(_elm),
+   $Graphics$Collage = Elm.Graphics.Collage.make(_elm),
+   $Graphics$Element = Elm.Graphics.Element.make(_elm),
+   $Keyboard = Elm.Keyboard.make(_elm),
+   $Signal = Elm.Signal.make(_elm),
+   $Text = Elm.Text.make(_elm),
+   $Time = Elm.Time.make(_elm),
+   $Window = Elm.Window.make(_elm);
+   var txt = function (f) {
+      return function ($) {
+         return $Text.leftAligned(f($Text.monospace($Text.color($Color.black)($Text.toText($)))));
+      };
+   };
+   var makefrog = F2(function (frog,
+   shape) {
+      return $Graphics$Collage.move({ctor: "_Tuple2"
+                                    ,_0: frog.x
+                                    ,_1: frog.y})(shape);
+   });
+   var make = F2(function (obj,
+   shape) {
+      return $Graphics$Collage.move({ctor: "_Tuple2"
+                                    ,_0: obj.x
+                                    ,_1: obj.y})(shape);
+   });
+   var changehousestate = function (house) {
+      return _U.replace([["state"
+                         ,true]],
+      house);
+   };
+   var near = F3(function (k,c,n) {
+      return _U.cmp(n,
+      k - c) > -1 && _U.cmp(n,
+      k + c) < 1;
+   });
+   var within = F2(function (frog,
+   car) {
+      return A2(near,
+      car.x,
+      20)(frog.x) && A2(near,
+      car.y,
+      15)(frog.y);
+   });
+   var checkwithin = F2(function (frog,
+   cars) {
+      return function () {
+         switch (cars.ctor)
+         {case "::": return A2(within,
+              frog,
+              cars._0) ? true : A2(checkwithin,
+              frog,
+              cars._1);
+            case "[]": return false;}
+         _E.Case($moduleName,
+         "between lines 87 and 91");
+      }();
+   });
+   var checkhouse = F2(function (frog,
+   houses) {
+      return function () {
+         switch (houses.ctor)
+         {case "::":
+            return _U.eq(houses._0.state,
+              false) && A2(within,
+              frog,
+              houses._0) ? true : A2(checkhouse,
+              frog,
+              houses._1);
+            case "[]": return false;}
+         _E.Case($moduleName,
+         "between lines 95 and 98");
+      }();
+   });
+   var stepEachFrog = F2(function (frog,
+   house) {
+      return _U.replace([["state"
+                         ,_U.eq(house.state,
+                         true) ? true : _U.eq(A2(within,
+                         frog,
+                         house),
+                         true) ? true : false]],
+      house);
+   });
+   var stepHouse = F2(function (frogs,
+   house) {
+      return function () {
+         switch (frogs.ctor)
+         {case "::": return A2(stepHouse,
+              frogs._1,
+              A2(stepEachFrog,
+              frogs._0,
+              house));
+            case "[]": return house;}
+         _E.Case($moduleName,
+         "between lines 147 and 149");
+      }();
+   });
+   var Game = function (a) {
+      return function (b) {
+         return function (c) {
+            return function (d) {
+               return function (e) {
+                  return function (f) {
+                     return function (g) {
+                        return function (h) {
+                           return function (i) {
+                              return function (j) {
+                                 return function (k) {
+                                    return function (l) {
+                                       return function (m) {
+                                          return function (n) {
+                                             return function (o) {
+                                                return function (p) {
+                                                   return function (q) {
+                                                      return function (r) {
+                                                         return function (s) {
+                                                            return {_: {}
+                                                                   ,car: l
+                                                                   ,car1: m
+                                                                   ,car2: n
+                                                                   ,car3: o
+                                                                   ,card: p
+                                                                   ,card1: q
+                                                                   ,card2: r
+                                                                   ,card3: s
+                                                                   ,frog: g
+                                                                   ,frog1: h
+                                                                   ,frog2: i
+                                                                   ,frog3: j
+                                                                   ,frog4: k
+                                                                   ,house: b
+                                                                   ,house1: c
+                                                                   ,house2: d
+                                                                   ,house3: e
+                                                                   ,house4: f
+                                                                   ,state: a};
+                                                         };
+                                                      };
+                                                   };
+                                                };
+                                             };
+                                          };
+                                       };
+                                    };
+                                 };
+                              };
+                           };
+                        };
+                     };
+                  };
+               };
+            };
+         };
+      };
+   };
+   var House = F3(function (a,
+   b,
+   c) {
+      return {_: {}
+             ,state: c
+             ,x: a
+             ,y: b};
+   });
+   var Car = F2(function (a,b) {
+      return {_: {},x: a,y: b};
+   });
+   var Frog = F4(function (a,
+   b,
+   c,
+   d) {
+      return {_: {}
+             ,direction: b
+             ,state: a
+             ,x: c
+             ,y: d};
+   });
+   var delta = A2($Signal._op["<~"],
+   $Time.inSeconds,
+   $Time.fps(10));
+   var Input = F2(function (a,b) {
+      return {_: {}
+             ,delta: b
+             ,dir: a};
+   });
+   var input = A2($Signal.sampleOn,
+   delta,
+   A2($Signal._op["~"],
+   A2($Signal._op["<~"],
+   Input,
+   $Keyboard.arrows),
+   delta));
+   var Stop = {ctor: "Stop"};
+   var Play = {ctor: "Play"};
+   var Unstarted = {ctor: "Unstarted"};
+   var Occupied = {ctor: "Occupied"};
+   var frogoccupied = function (frog) {
+      return _U.replace([["state"
+                         ,Occupied]],
+      frog);
+   };
+   var Dead = {ctor: "Dead"};
+   var frogdead = function (frog) {
+      return _U.replace([["state"
+                         ,Dead]],
+      frog);
+   };
+   var stepState = F2(function (finalfrog,
+   state) {
+      return _U.eq(finalfrog.state,
+      Occupied) ? Stop : _U.eq(finalfrog.state,
+      Dead) ? Stop : Play;
+   });
+   var Alive = {ctor: "Alive"};
+   var Down = {ctor: "Down"};
+   var Up = {ctor: "Up"};
+   var Right = {ctor: "Right"};
+   var Left = {ctor: "Left"};
+   var rotateRight = function (frog) {
+      return _U.replace([["direction"
+                         ,_U.eq(frog.direction,
+                         Left) ? Down : _U.eq(frog.direction,
+                         Right) ? Up : _U.eq(frog.direction,
+                         Up) ? Left : Right]],
+      frog);
+   };
+   var rotateLeft = function (frog) {
+      return _U.replace([["direction"
+                         ,_U.eq(frog.direction,
+                         Left) ? Up : _U.eq(frog.direction,
+                         Right) ? Down : _U.eq(frog.direction,
+                         Up) ? Right : Left]],
+      frog);
+   };
+   var velocity = 50;
+   var $ = {ctor: "_Tuple2"
+           ,_0: 150
+           ,_1: 100},
+   fourthWidth = $._0,
+   fourthHeight = $._1;
+   var jumpUp = function (frog) {
+      return _U.replace([["y"
+                         ,frog.y + fourthHeight]],
+      frog);
+   };
+   var jumpDown = function (frog) {
+      return _U.replace([["y"
+                         ,frog.y - fourthHeight]],
+      frog);
+   };
+   var jumpLeft = function (frog) {
+      return _U.replace([["x"
+                         ,frog.x - fourthHeight]],
+      frog);
+   };
+   var jumpRight = function (frog) {
+      return _U.replace([["x"
+                         ,frog.x + fourthHeight]],
+      frog);
+   };
+   var jump = function (frog) {
+      return _U.eq(frog.direction,
+      Left) ? jumpLeft(frog) : _U.eq(frog.direction,
+      Right) ? jumpRight(frog) : _U.eq(frog.direction,
+      Up) ? jumpUp(frog) : jumpDown(frog);
+   };
+   var motionFrog = F2(function (dir,
+   frog) {
+      return _U.eq(dir.y,
+      1) ? jump(frog) : _U.eq(dir.x,
+      1) ? rotateLeft(frog) : _U.eq(dir.x,
+      -1) ? rotateRight(frog) : frog;
+   });
+   var stepFrog = F4(function (dir,
+   frog,
+   houses,
+   cars) {
+      return _U.eq(frog.state,
+      Dead) ? frog : _U.eq(frog.state,
+      Occupied) ? frog : A2(checkwithin,
+      frog,
+      cars) ? frogdead(frog) : A2(checkhouse,
+      frog,
+      houses) ? frogoccupied(frog) : A2(motionFrog,
+      dir,
+      frog);
+   });
+   var frogalive = function (frog) {
+      return _U.replace([["y"
+                         ,(0 - fourthHeight) * 1.5]
+                        ,["state",Alive]],
+      frog);
+   };
+   var stepFollow = F5(function (dir,
+   currentfrog,
+   prevfrog,
+   houses,
+   cars) {
+      return _U.eq(prevfrog.state,
+      Alive) ? currentfrog : _U.eq(prevfrog.state,
+      Unstarted) ? currentfrog : _U.eq(currentfrog.state,
+      Dead) ? currentfrog : _U.eq(currentfrog.state,
+      Occupied) ? currentfrog : A2(checkwithin,
+      currentfrog,
+      cars) ? frogdead(currentfrog) : A2(checkhouse,
+      currentfrog,
+      houses) ? frogoccupied(currentfrog) : _U.eq(currentfrog.state,
+      Alive) ? A2(motionFrog,
+      dir,
+      currentfrog) : _U.eq(prevfrog.state,
+      Occupied) ? frogalive(currentfrog) : _U.eq(prevfrog.state,
+      Dead) ? frogalive(currentfrog) : A2(motionFrog,
+      dir,
+      currentfrog);
+   });
+   var $ = {ctor: "_Tuple2"
+           ,_0: 300
+           ,_1: 200},
+   halfWidth = $._0,
+   halfHeight = $._1;
+   var defaultGame = {_: {}
+                     ,car: {_: {}
+                           ,x: halfWidth * 1.05
+                           ,y: fourthHeight / 2}
+                     ,car1: {_: {}
+                            ,x: fourthWidth * 0.93
+                            ,y: fourthHeight / 2}
+                     ,car2: {_: {}
+                            ,x: 0
+                            ,y: fourthHeight / 2}
+                     ,car3: {_: {}
+                            ,x: (0 - fourthWidth) * 1.1
+                            ,y: fourthHeight / 2}
+                     ,card: {_: {}
+                            ,x: (0 - halfWidth) * 1.03
+                            ,y: (0 - fourthHeight) / 2}
+                     ,card1: {_: {}
+                             ,x: (0 - fourthWidth) * 0.8
+                             ,y: (0 - fourthHeight) / 2}
+                     ,card2: {_: {}
+                             ,x: 0
+                             ,y: (0 - fourthHeight) / 2}
+                     ,card3: {_: {}
+                             ,x: fourthWidth * 1.12
+                             ,y: (0 - fourthHeight) / 2}
+                     ,frog: {_: {}
+                            ,direction: Up
+                            ,state: Alive
+                            ,x: 0
+                            ,y: (0 - fourthHeight) * 1.5}
+                     ,frog1: {_: {}
+                             ,direction: Up
+                             ,state: Unstarted
+                             ,x: 0
+                             ,y: (0 - fourthHeight) * 3}
+                     ,frog2: {_: {}
+                             ,direction: Up
+                             ,state: Unstarted
+                             ,x: 0
+                             ,y: (0 - fourthHeight) * 3}
+                     ,frog3: {_: {}
+                             ,direction: Up
+                             ,state: Unstarted
+                             ,x: 0
+                             ,y: (0 - fourthHeight) * 3}
+                     ,frog4: {_: {}
+                             ,direction: Up
+                             ,state: Unstarted
+                             ,x: 0
+                             ,y: (0 - fourthHeight) * 3}
+                     ,house: {_: {}
+                             ,state: false
+                             ,x: halfWidth * 2 / 3
+                             ,y: fourthHeight * 1.5}
+                     ,house1: {_: {}
+                              ,state: false
+                              ,x: halfWidth / 3
+                              ,y: fourthHeight * 1.5}
+                     ,house2: {_: {}
+                              ,state: false
+                              ,x: 0
+                              ,y: fourthHeight * 1.5}
+                     ,house3: {_: {}
+                              ,state: false
+                              ,x: (0 - halfWidth) / 3
+                              ,y: fourthHeight * 1.5}
+                     ,house4: {_: {}
+                              ,state: false
+                              ,x: (0 - halfWidth) * 2 / 3
+                              ,y: fourthHeight * 1.5}
+                     ,state: Play};
+   var stepCarUp = F2(function (delta,
+   car) {
+      return _U.replace([["x"
+                         ,_U.cmp(car.x,
+                         0 - halfWidth) < 1 ? halfWidth : car.x - velocity * delta]],
+      car);
+   });
+   var stepCarDown = F2(function (delta,
+   card) {
+      return _U.replace([["x"
+                         ,_U.cmp(card.x,
+                         halfWidth) > -1 ? 0 - halfWidth : card.x + velocity * delta]],
+      card);
+   });
+   var stepGame = F2(function (_v9,
+   _v10) {
+      return function () {
+         return function () {
+            return function () {
+               var frogs = _L.fromArray([_v10.frog
+                                        ,_v10.frog1
+                                        ,_v10.frog2
+                                        ,_v10.frog3
+                                        ,_v10.frog4]);
+               var cars = _L.fromArray([_v10.car
+                                       ,_v10.car1
+                                       ,_v10.car2
+                                       ,_v10.car3
+                                       ,_v10.card
+                                       ,_v10.card1
+                                       ,_v10.card2
+                                       ,_v10.card3]);
+               var houses = _L.fromArray([_v10.house
+                                         ,_v10.house1
+                                         ,_v10.house2
+                                         ,_v10.house3
+                                         ,_v10.house4]);
+               return _U.replace([["state"
+                                  ,A2(stepState,
+                                  _v10.frog4,
+                                  _v10.state)]
+                                 ,["house"
+                                  ,A2(stepHouse,frogs,_v10.house)]
+                                 ,["house1"
+                                  ,A2(stepHouse,
+                                  frogs,
+                                  _v10.house1)]
+                                 ,["house2"
+                                  ,A2(stepHouse,
+                                  frogs,
+                                  _v10.house2)]
+                                 ,["house3"
+                                  ,A2(stepHouse,
+                                  frogs,
+                                  _v10.house3)]
+                                 ,["house4"
+                                  ,A2(stepHouse,
+                                  frogs,
+                                  _v10.house4)]
+                                 ,["frog"
+                                  ,A4(stepFrog,
+                                  _v9.dir,
+                                  _v10.frog,
+                                  houses,
+                                  cars)]
+                                 ,["frog1"
+                                  ,A5(stepFollow,
+                                  _v9.dir,
+                                  _v10.frog1,
+                                  _v10.frog,
+                                  houses,
+                                  cars)]
+                                 ,["frog2"
+                                  ,A5(stepFollow,
+                                  _v9.dir,
+                                  _v10.frog2,
+                                  _v10.frog1,
+                                  houses,
+                                  cars)]
+                                 ,["frog3"
+                                  ,A5(stepFollow,
+                                  _v9.dir,
+                                  _v10.frog3,
+                                  _v10.frog2,
+                                  houses,
+                                  cars)]
+                                 ,["frog4"
+                                  ,A5(stepFollow,
+                                  _v9.dir,
+                                  _v10.frog4,
+                                  _v10.frog3,
+                                  houses,
+                                  cars)]
+                                 ,["car"
+                                  ,A2(stepCarUp,
+                                  _v9.delta,
+                                  _v10.car)]
+                                 ,["car1"
+                                  ,A2(stepCarUp,
+                                  _v9.delta,
+                                  _v10.car1)]
+                                 ,["car2"
+                                  ,A2(stepCarUp,
+                                  _v9.delta,
+                                  _v10.car2)]
+                                 ,["car3"
+                                  ,A2(stepCarUp,
+                                  _v9.delta,
+                                  _v10.car3)]
+                                 ,["card"
+                                  ,A2(stepCarDown,
+                                  _v9.delta,
+                                  _v10.card)]
+                                 ,["card1"
+                                  ,A2(stepCarDown,
+                                  _v9.delta,
+                                  _v10.card1)]
+                                 ,["card2"
+                                  ,A2(stepCarDown,
+                                  _v9.delta,
+                                  _v10.card2)]
+                                 ,["card3"
+                                  ,A2(stepCarDown,
+                                  _v9.delta,
+                                  _v10.card3)]],
+               _v10);
+            }();
+         }();
+      }();
+   });
+   var gameState = A3($Signal.foldp,
+   stepGame,
+   defaultGame,
+   input);
+   var $ = {ctor: "_Tuple2"
+           ,_0: 600
+           ,_1: 400},
+   gameWidth = $._0,
+   gameHeight = $._1;
+   var display = F2(function (_v13,
+   _v14) {
+      return function () {
+         return function () {
+            switch (_v13.ctor)
+            {case "_Tuple2":
+               return _U.eq(_v14.state,
+                 Stop) ? A3($Graphics$Element.container,
+                 _v13._0,
+                 _v13._1,
+                 $Graphics$Element.middle)(A3($Graphics$Collage.collage,
+                 gameWidth,
+                 gameHeight,
+                 _L.fromArray([$Graphics$Collage.filled($Color.grey)(A2($Graphics$Collage.rect,
+                              gameWidth,
+                              gameHeight))
+                              ,$Graphics$Collage.toForm(A2(txt,
+                              $Text.height(50),
+                              "Game Over"))]))) : function () {
+                    var src4 = _U.eq(_v14.frog4.state,
+                    Dead) ? "splat.gif" : _U.eq(_v14.frog4.direction,
+                    Left) ? "frog-left.png" : _U.eq(_v14.frog4.direction,
+                    Right) ? "frog-right.png" : _U.eq(_v14.frog4.direction,
+                    Up) ? "frog-up.png" : "frog-down.png";
+                    var src3 = _U.eq(_v14.frog3.state,
+                    Dead) ? "splat.gif" : _U.eq(_v14.frog3.direction,
+                    Left) ? "frog-left.png" : _U.eq(_v14.frog3.direction,
+                    Right) ? "frog-right.png" : _U.eq(_v14.frog3.direction,
+                    Up) ? "frog-up.png" : "frog-down.png";
+                    var src2 = _U.eq(_v14.frog2.state,
+                    Dead) ? "splat.gif" : _U.eq(_v14.frog2.direction,
+                    Left) ? "frog-left.png" : _U.eq(_v14.frog2.direction,
+                    Right) ? "frog-right.png" : _U.eq(_v14.frog2.direction,
+                    Up) ? "frog-up.png" : "frog-down.png";
+                    var src1 = _U.eq(_v14.frog1.state,
+                    Dead) ? "splat.gif" : _U.eq(_v14.frog1.direction,
+                    Left) ? "frog-left.png" : _U.eq(_v14.frog1.direction,
+                    Right) ? "frog-right.png" : _U.eq(_v14.frog1.direction,
+                    Up) ? "frog-up.png" : "frog-down.png";
+                    var src = _U.eq(_v14.frog.state,
+                    Dead) ? "splat.gif" : _U.eq(_v14.frog.direction,
+                    Left) ? "frog-left.png" : _U.eq(_v14.frog.direction,
+                    Right) ? "frog-right.png" : _U.eq(_v14.frog.direction,
+                    Up) ? "frog-up.png" : "frog-down.png";
+                    return A3($Graphics$Element.container,
+                    _v13._0,
+                    _v13._1,
+                    $Graphics$Element.middle)(A3($Graphics$Collage.collage,
+                    gameWidth,
+                    gameHeight,
+                    _L.fromArray([$Graphics$Collage.filled($Color.grey)(A2($Graphics$Collage.rect,
+                                 gameWidth,
+                                 gameHeight))
+                                 ,$Graphics$Collage.filled($Color.yellow)(A2($Graphics$Collage.rect,
+                                 gameWidth,
+                                 20))
+                                 ,$Graphics$Collage.move({ctor: "_Tuple2"
+                                                         ,_0: 0
+                                                         ,_1: fourthHeight * 1.5})($Graphics$Collage.filled($Color.green)(A2($Graphics$Collage.rect,
+                                 gameWidth,
+                                 fourthHeight)))
+                                 ,$Graphics$Collage.move({ctor: "_Tuple2"
+                                                         ,_0: 0
+                                                         ,_1: (0 - fourthHeight) * 1.5})($Graphics$Collage.filled($Color.green)(A2($Graphics$Collage.rect,
+                                 gameWidth,
+                                 fourthHeight)))
+                                 ,$Graphics$Collage.move({ctor: "_Tuple2"
+                                                         ,_0: 0
+                                                         ,_1: fourthHeight * 1.5})($Graphics$Collage.filled($Color.brown)($Graphics$Collage.circle(30)))
+                                 ,$Graphics$Collage.move({ctor: "_Tuple2"
+                                                         ,_0: halfWidth / 3
+                                                         ,_1: fourthHeight * 1.5})($Graphics$Collage.filled($Color.brown)($Graphics$Collage.circle(30)))
+                                 ,$Graphics$Collage.move({ctor: "_Tuple2"
+                                                         ,_0: halfWidth * 2 / 3
+                                                         ,_1: fourthHeight * 1.5})($Graphics$Collage.filled($Color.brown)($Graphics$Collage.circle(30)))
+                                 ,$Graphics$Collage.move({ctor: "_Tuple2"
+                                                         ,_0: (0 - halfWidth) / 3
+                                                         ,_1: fourthHeight * 1.5})($Graphics$Collage.filled($Color.brown)($Graphics$Collage.circle(30)))
+                                 ,$Graphics$Collage.move({ctor: "_Tuple2"
+                                                         ,_0: (0 - halfWidth) * 2 / 3
+                                                         ,_1: fourthHeight * 1.5})($Graphics$Collage.filled($Color.brown)($Graphics$Collage.circle(30)))
+                                 ,makefrog(_v14.frog)($Graphics$Collage.toForm(A3($Graphics$Element.image,
+                                 20,
+                                 20,
+                                 src)))
+                                 ,makefrog(_v14.frog1)($Graphics$Collage.toForm(A3($Graphics$Element.image,
+                                 20,
+                                 20,
+                                 src1)))
+                                 ,makefrog(_v14.frog2)($Graphics$Collage.toForm(A3($Graphics$Element.image,
+                                 20,
+                                 20,
+                                 src2)))
+                                 ,makefrog(_v14.frog3)($Graphics$Collage.toForm(A3($Graphics$Element.image,
+                                 20,
+                                 20,
+                                 src3)))
+                                 ,makefrog(_v14.frog4)($Graphics$Collage.toForm(A3($Graphics$Element.image,
+                                 20,
+                                 20,
+                                 src4)))
+                                 ,make(_v14.car)($Graphics$Collage.toForm(A3($Graphics$Element.image,
+                                 40,
+                                 30,
+                                 "blue-car-left.png")))
+                                 ,make(_v14.car1)($Graphics$Collage.toForm(A3($Graphics$Element.image,
+                                 40,
+                                 30,
+                                 "white-car-left.png")))
+                                 ,make(_v14.car2)($Graphics$Collage.toForm(A3($Graphics$Element.image,
+                                 40,
+                                 30,
+                                 "yellow-car-left.png")))
+                                 ,make(_v14.car3)($Graphics$Collage.toForm(A3($Graphics$Element.image,
+                                 40,
+                                 30,
+                                 "red-car-left.png")))
+                                 ,make(_v14.card)($Graphics$Collage.toForm(A3($Graphics$Element.image,
+                                 40,
+                                 30,
+                                 "green-car-right.png")))
+                                 ,make(_v14.card1)($Graphics$Collage.toForm(A3($Graphics$Element.image,
+                                 40,
+                                 30,
+                                 "aqua-car-right.png")))
+                                 ,make(_v14.card2)($Graphics$Collage.toForm(A3($Graphics$Element.image,
+                                 40,
+                                 30,
+                                 "white-car-right.png")))
+                                 ,make(_v14.card3)($Graphics$Collage.toForm(A3($Graphics$Element.image,
+                                 40,
+                                 30,
+                                 "yellow-car-right.png")))])));
+                 }();}
+            _E.Case($moduleName,
+            "between lines 192 and 251");
+         }();
+      }();
+   });
+   var main = A3($Signal.lift2,
+   display,
+   $Window.dimensions,
+   gameState);
+   _elm.Main.values = {_op: _op
+                      ,gameHeight: gameHeight
+                      ,gameWidth: gameWidth
+                      ,halfHeight: halfHeight
+                      ,halfWidth: halfWidth
+                      ,fourthHeight: fourthHeight
+                      ,fourthWidth: fourthWidth
+                      ,velocity: velocity
+                      ,Left: Left
+                      ,Right: Right
+                      ,Up: Up
+                      ,Down: Down
+                      ,Alive: Alive
+                      ,Dead: Dead
+                      ,Occupied: Occupied
+                      ,Unstarted: Unstarted
+                      ,Play: Play
+                      ,Stop: Stop
+                      ,Input: Input
+                      ,delta: delta
+                      ,input: input
+                      ,Frog: Frog
+                      ,Car: Car
+                      ,House: House
+                      ,Game: Game
+                      ,defaultGame: defaultGame
+                      ,jumpUp: jumpUp
+                      ,jumpDown: jumpDown
+                      ,jumpLeft: jumpLeft
+                      ,jumpRight: jumpRight
+                      ,jump: jump
+                      ,rotateRight: rotateRight
+                      ,rotateLeft: rotateLeft
+                      ,near: near
+                      ,within: within
+                      ,checkwithin: checkwithin
+                      ,changehousestate: changehousestate
+                      ,checkhouse: checkhouse
+                      ,frogdead: frogdead
+                      ,frogoccupied: frogoccupied
+                      ,frogalive: frogalive
+                      ,motionFrog: motionFrog
+                      ,stepFrog: stepFrog
+                      ,stepFollow: stepFollow
+                      ,stepCarUp: stepCarUp
+                      ,stepCarDown: stepCarDown
+                      ,stepEachFrog: stepEachFrog
+                      ,stepHouse: stepHouse
+                      ,stepState: stepState
+                      ,stepGame: stepGame
+                      ,gameState: gameState
+                      ,make: make
+                      ,makefrog: makefrog
+                      ,txt: txt
+                      ,display: display
+                      ,main: main};
+   return _elm.Main.values;
+};

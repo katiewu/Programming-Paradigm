@@ -1,0 +1,13 @@
+Name: Rescue Operation
+
+Designer: Wu Jingyuan
+
+Description: The princess has been taken away to a secret chamber by your enemy. 
+             The journey is destined to be dangerous and threatening! But you must
+             conquer it and rescue your lovely princess.
+
+Requirement: Locked door. You must use spell to open the gate of the secret chamber.
+             Limited resources. You can just take at most three objects. If you want
+             to take the object you want, you must drop something.
+             Incomplete object. The flashlight will work if and only if you have batteries.
+             

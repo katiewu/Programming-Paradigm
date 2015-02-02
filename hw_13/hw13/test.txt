@@ -1,0 +1,4 @@
+Trait Assertions also provides methods that allow you to cancel a test. 
+You would cancel a test if a resource required by the test was unavailable. 
+For example, if a test requires an external database to be online, and it isn't, the test could be canceled to indicate it was unable to run because of the missing database. 
+Such a test assumes a database is available, and you can use the assume method to indicate this at the beginning of the test, like this.

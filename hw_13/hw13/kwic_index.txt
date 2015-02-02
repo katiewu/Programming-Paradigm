@@ -1,0 +1,160 @@
+test.txt
+1	                        trait 	assertions	 also provides methods that al
+4	                  such a test 	assume	s a database is available, and
+4	vailable, and you can use the 	assume	 method to indicate this at th
+4	                  such a test 	assumes	 a database is available, and 
+4	ethod to indicate this at the 	beginning	 of the test, like this. 
+1	des methods that allow you to 	cancel	 a test.  
+2	                    you would 	cancel	 a test if a resource required
+3	d it isn't, the test could be 	canceled	 to indicate it was unable to 
+3	f a test requires an external 	database	 to be online, and it isn't, t
+3	to run because of the missing 	database	.  
+4	        such a test assumes a 	database	 is available, and you can use
+3	xample, if a test requires an 	external	 database to be online, and it
+4	e, and you can use the assume 	method	 to indicate this at the begin
+1	rait assertions also provides 	methods	 that allow you to cancel a te
+3	 unable to run because of the 	missing	 database.  
+3	es an external database to be 	online	, and it isn't, the test could
+2	d cancel a test if a resource 	required	 by the test was unavailable. 
+3	       for example, if a test 	requires	 an external database to be on
+2	 you would cancel a test if a 	resource	 required by the test was unav
+3	 to indicate it was unable to 	run	 because of the missing databa
+1	ds that allow you to cancel a 	test	.  
+2	           you would cancel a 	test	 if a resource required by the
+2	if a resource required by the 	test	 was unavailable.  
+3	            for example, if a 	test	 requires an external database
+3	 be online, and it isn't, the 	test	 could be canceled to indicate
+4	                       such a 	test	 assumes a database is availab
+4	 this at the beginning of the 	test	, like this. 
+1	                              	trait	 assertions also provides meth
+3	e canceled to indicate it was 	unable	 to run because of the missing
+2	urce required by the test was 	unavailable	.  
+
+test.txt
+1	                        trait 	assertions	 also provides methods that al
+4	                  such a test 	assume	s a database is available, and
+4	vailable, and you can use the 	assume	 method to indicate this at th
+4	                  such a test 	assumes	 a database is available, and 
+4	ethod to indicate this at the 	beginning	 of the test, like this. 
+1	des methods that allow you to 	cancel	 a test.  
+2	                    you would 	cancel	 a test if a resource required
+3	d it isn't, the test could be 	canceled	 to indicate it was unable to 
+3	f a test requires an external 	database	 to be online, and it isn't, t
+3	to run because of the missing 	database	.  
+4	        such a test assumes a 	database	 is available, and you can use
+3	xample, if a test requires an 	external	 database to be online, and it
+4	e, and you can use the assume 	method	 to indicate this at the begin
+1	rait assertions also provides 	methods	 that allow you to cancel a te
+3	 unable to run because of the 	missing	 database.  
+3	es an external database to be 	online	, and it isn't, the test could
+2	d cancel a test if a resource 	required	 by the test was unavailable. 
+3	       for example, if a test 	requires	 an external database to be on
+2	 you would cancel a test if a 	resource	 required by the test was unav
+3	 to indicate it was unable to 	run	 because of the missing databa
+1	ds that allow you to cancel a 	test	.  
+2	           you would cancel a 	test	 if a resource required by the
+2	if a resource required by the 	test	 was unavailable.  
+3	            for example, if a 	test	 requires an external database
+3	 be online, and it isn't, the 	test	 could be canceled to indicate
+4	                       such a 	test	 assumes a database is availab
+4	 this at the beginning of the 	test	, like this. 
+1	                              	trait	 assertions also provides meth
+3	e canceled to indicate it was 	unable	 to run because of the missing
+2	urce required by the test was 	unavailable	.  
+
+test.txt
+1	                        trait 	assertions	 also provides methods that al
+4	                  such a test 	assume	s a database is available, and
+4	vailable, and you can use the 	assume	 method to indicate this at th
+4	                  such a test 	assumes	 a database is available, and 
+4	ethod to indicate this at the 	beginning	 of the test, like this. 
+1	des methods that allow you to 	cancel	 a test.  
+2	                    you would 	cancel	 a test if a resource required
+3	d it isn't, the test could be 	canceled	 to indicate it was unable to 
+3	f a test requires an external 	database	 to be online, and it isn't, t
+3	to run because of the missing 	database	.  
+4	        such a test assumes a 	database	 is available, and you can use
+3	xample, if a test requires an 	external	 database to be online, and it
+4	e, and you can use the assume 	method	 to indicate this at the begin
+1	rait assertions also provides 	methods	 that allow you to cancel a te
+3	 unable to run because of the 	missing	 database.  
+3	es an external database to be 	online	, and it isn't, the test could
+2	d cancel a test if a resource 	required	 by the test was unavailable. 
+3	       for example, if a test 	requires	 an external database to be on
+2	 you would cancel a test if a 	resource	 required by the test was unav
+3	 to indicate it was unable to 	run	 because of the missing databa
+1	ds that allow you to cancel a 	test	.  
+2	           you would cancel a 	test	 if a resource required by the
+2	if a resource required by the 	test	 was unavailable.  
+3	            for example, if a 	test	 requires an external database
+3	 be online, and it isn't, the 	test	 could be canceled to indicate
+4	                       such a 	test	 assumes a database is availab
+4	 this at the beginning of the 	test	, like this. 
+1	                              	trait	 assertions also provides meth
+3	e canceled to indicate it was 	unable	 to run because of the missing
+2	urce required by the test was 	unavailable	.  
+
+test.txt
+1	                        trait 	assertions	 also provides methods that al
+4	                  such a test 	assume	s a database is available, and
+4	vailable, and you can use the 	assume	 method to indicate this at th
+4	                  such a test 	assumes	 a database is available, and 
+4	ethod to indicate this at the 	beginning	 of the test, like this. 
+1	des methods that allow you to 	cancel	 a test.  
+2	                    you would 	cancel	 a test if a resource required
+3	d it isn't, the test could be 	canceled	 to indicate it was unable to 
+3	f a test requires an external 	database	 to be online, and it isn't, t
+3	to run because of the missing 	database	.  
+4	        such a test assumes a 	database	 is available, and you can use
+3	xample, if a test requires an 	external	 database to be online, and it
+4	e, and you can use the assume 	method	 to indicate this at the begin
+1	rait assertions also provides 	methods	 that allow you to cancel a te
+3	 unable to run because of the 	missing	 database.  
+3	es an external database to be 	online	, and it isn't, the test could
+2	d cancel a test if a resource 	required	 by the test was unavailable. 
+3	       for example, if a test 	requires	 an external database to be on
+2	 you would cancel a test if a 	resource	 required by the test was unav
+3	 to indicate it was unable to 	run	 because of the missing databa
+1	ds that allow you to cancel a 	test	.  
+2	           you would cancel a 	test	 if a resource required by the
+2	if a resource required by the 	test	 was unavailable.  
+3	            for example, if a 	test	 requires an external database
+3	 be online, and it isn't, the 	test	 could be canceled to indicate
+4	                       such a 	test	 assumes a database is availab
+4	 this at the beginning of the 	test	, like this. 
+1	                              	trait	 assertions also provides meth
+3	e canceled to indicate it was 	unable	 to run because of the missing
+2	urce required by the test was 	unavailable	.  
+
+test.txt
+1	                        trait 	assertions	 also provides methods that al
+4	                  such a test 	assume	s a database is available, and
+4	vailable, and you can use the 	assume	 method to indicate this at th
+4	                  such a test 	assumes	 a database is available, and 
+4	ethod to indicate this at the 	beginning	 of the test, like this. 
+1	des methods that allow you to 	cancel	 a test.  
+2	                    you would 	cancel	 a test if a resource required
+3	d it isn't, the test could be 	canceled	 to indicate it was unable to 
+3	f a test requires an external 	database	 to be online, and it isn't, t
+3	to run because of the missing 	database	.  
+4	        such a test assumes a 	database	 is available, and you can use
+3	xample, if a test requires an 	external	 database to be online, and it
+4	e, and you can use the assume 	method	 to indicate this at the begin
+1	rait assertions also provides 	methods	 that allow you to cancel a te
+3	 unable to run because of the 	missing	 database.  
+3	es an external database to be 	online	, and it isn't, the test could
+2	d cancel a test if a resource 	required	 by the test was unavailable. 
+3	       for example, if a test 	requires	 an external database to be on
+2	 you would cancel a test if a 	resource	 required by the test was unav
+3	 to indicate it was unable to 	run	 because of the missing databa
+1	ds that allow you to cancel a 	test	.  
+2	           you would cancel a 	test	 if a resource required by the
+2	if a resource required by the 	test	 was unavailable.  
+3	            for example, if a 	test	 requires an external database
+3	 be online, and it isn't, the 	test	 could be canceled to indicate
+4	                       such a 	test	 assumes a database is availab
+4	 this at the beginning of the 	test	, like this. 
+1	                              	trait	 assertions also provides meth
+3	e canceled to indicate it was 	unable	 to run because of the missing
+2	urce required by the test was 	unavailable	.  
+
